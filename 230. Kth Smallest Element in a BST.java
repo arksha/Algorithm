@@ -8,7 +8,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
- //1.inorder traversal O(n)
+ //1.inorder traversal O(n) implement by iteration and stack
 public class Solution {
     public int kthSmallest(TreeNode root, int k) {
         Stack<TreeNode> s = new Stack<>();
@@ -28,4 +28,22 @@ public class Solution {
         return res;
     }
 }
-//2. binary search
+//2. binary search, count every subtree node number
+
+public class Solution {
+    public int kthSmallest(TreeNode root, int k) {//binary recursive
+        
+        int count  = countnode(root.left);//count left subtree
+        if(count+1==k) 
+            return root.val;
+        else if(count+1<k) 
+            return kthSmallest(root.right,k-1-count);//have to minus root itself
+        else 
+            return kthSmallest(root.left,k);
+    }
+    public int countnode(TreeNode root){
+        if(root==null) return 0;
+        return 1+countnode(root.left)+countnode(root.right);
+        
+    } 
+}
