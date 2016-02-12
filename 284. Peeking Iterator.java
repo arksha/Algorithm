@@ -22,9 +22,9 @@
 // Java Iterator interface reference:
 // https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
 class PeekingIterator implements Iterator<Integer> {
-    private boolean haspeek = false;
-    private Iterator<Integer> iter;
-    private Integer nextele = null;
+    private boolean haspeek = false;//whether there is a next element boolean
+    private Iterator<Integer> iter;//iterator
+    private Integer nextele = null;//cache to store next element
 	public PeekingIterator(Iterator<Integer> iterator) {
 	    // initialize any member here.
 	    this.iter = iterator;
@@ -58,4 +58,74 @@ class PeekingIterator implements Iterator<Integer> {
 	}
 }
 
-//follow up: use Java var
+//A more consice version
+//为了能peek后下次next还得到同样的数字，我们要用一个缓存保存下一个数字。这样当peek时候，返回缓存就行了，迭代器位置也不会变。
+//当next的时候除了要返回缓存，还要将缓存更新为下一个数字，如果没有下一个就将缓存更新为null。
+
+// Java Iterator interface reference:
+// https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
+class PeekingIterator implements Iterator<Integer> {
+        Integer cache = null;
+        Iterator<Integer> it;
+	public PeekingIterator(Iterator<Integer> iterator) {
+	    // initialize any member here.
+	    this.it = iterator;
+	    cache = it.next();
+	}
+
+    // Returns the next element in the iteration without advancing the iterator.
+	public Integer peek() {
+        return cache;
+	}
+
+	// hasNext() and next() should behave the same as in the Iterator interface.
+	// Override them if needed.
+	@Override
+	public Integer next() {
+	    int ret = cache;
+	    if(it.hasNext()){
+	        cache = it.next();
+	    }else{
+	        cache = null;
+	    }
+	    return ret;
+	}
+
+	@Override
+	public boolean hasNext() {
+	    return (cache!=null);
+	}
+}
+
+//follow up: use Java Generic
+
+class PeekingIterator<T> implements Iterator<T> {
+
+    T cache;
+    Iterator<T> it;
+
+    public PeekingIterator(Iterator<T> iterator) {
+        // initialize any member here.
+        this.cache = iterator.next();
+        this.it = iterator;
+    }
+
+    // Returns the next element in the iteration without advancing the iterator.
+    public T peek() {
+        return cache;
+    }
+
+    // hasNext() and next() should behave the same as in the Iterator interface.
+    // Override them if needed.
+    @Override
+    public T next() {
+        T res = cache;
+        cache = it.hasNext() ? it.next() : null;
+        return res;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return it.hasNext() || cache != null;
+    }
+}
