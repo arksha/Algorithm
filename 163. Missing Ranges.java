@@ -25,12 +25,15 @@ public class Solution {
                     res.add(lower + "");
                 else if (nums[i] - lower > 1)
                     res.add(lower + "->" + (nums[0] - 1));
+
             } else if (i == nums.length){
+
                 if (upper - nums[i - 1] == 1)
                     res.add(upper + "");
                 else if (upper - nums[i - 1] > 1)
                     res.add((nums[i - 1] + 1) + "->" + upper);
             } else {
+            	
                 if (nums[i] - nums[i - 1] == 2)
                     res.add(nums[i - 1] + 1 + "");
                 else if (nums[i] - nums[i - 1] > 2)
