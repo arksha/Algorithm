@@ -43,3 +43,5 @@ public class Solution {
         return res;
     }
 }
+
+//insert from middle
