@@ -22,3 +22,4 @@ public class NumArray {//DP
 // NumArray numArray = new NumArray(nums);
 // numArray.sumRange(0, 1);
 // numArray.sumRange(1, 2);
+
