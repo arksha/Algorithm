@@ -1,4 +1,5 @@
 75. Sort Colors
+//at least four ways to solve this
 
 //way one pass in place
 //use quick sort and pivot 
