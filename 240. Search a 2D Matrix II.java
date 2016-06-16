@@ -27,7 +27,33 @@ public class Solution {
         }
     }
 }
+//---------------------------------------------------------------------------------------------------
+// updated Jun-15-2016
 
+public class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix==null||matrix.length==0) return false;
+        return binary(matrix,target,0,matrix.length-1,0,matrix[0].length-1);
+    }
+    public boolean binary(int[][] matrix, int target, int rowl,int rowh,int coll,int colh){
+        if(rowl>rowh||coll>colh) return false;
+        int rmid = rowl+(rowh-rowl)/2;
+        int cmid = coll+(colh-coll)/2;
+        int mid = matrix[rmid][cmid];
+        if(mid==target) return true;
+        else if(mid>target){
+            return binary(matrix,target,rowl,rmid-1,coll,cmid-1)||
+            binary(matrix,target,rmid,rowh,coll,cmid-1)||
+            binary(matrix,target,rowl,rmid-1,cmid,colh);
+        }else{
+            return binary(matrix,target,rmid+1,rowh,coll,cmid) ||
+            binary(matrix,target,rowl,rmid-1,cmid,colh)||
+            binary(matrix,target,rmid,rowh,cmid+1,colh);
+        }
+    }
+}
+//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 //O(N+M), go through matrix from right up side to left bottom
 
 public class Solution {
