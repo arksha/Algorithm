@@ -1,6 +1,6 @@
-349. Intersection of Two Arrays
+// 349. Intersection of Two Arrays
 
-first way , use  2 HashSet
+// first way , use  2 HashSet
 
 public class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
