@@ -1,6 +1,19 @@
 // 349. Intersection of Two Arrays
 
+// Given two arrays, write a function to compute their intersection.
+
+// Example:
+// Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].
+
+// Note:
+// Each element in the result must be unique.
+// The result can be in any order.
+
+// ----------------------------------------------------------------------------------------------------------------
 // first way , use  2 HashSet
+// three for loops, one for add nums1 to set1, 
+// one for check the second nums2 appears in nums1 and add into the second set,
+// last is to count the all the numbers in the second map
 
 public class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {

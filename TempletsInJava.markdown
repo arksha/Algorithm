@@ -18,6 +18,7 @@
 ###3.String
 	s = s.trim();
 	s = s.toLowerCase();
+	char[] = s.split(" ");
 ###4.Character
 	Character.isDigit( c );
 	Character.isLetterorDigit( c );
