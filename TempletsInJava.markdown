@@ -22,6 +22,16 @@
 ###4.Character
 	Character.isDigit( c );
 	Character.isLetterorDigit( c );
+###5.HashMap and HashSet
+	HashMap<Integer,Integer> map = new HashMap<>();
+	map.put(key,value);
+	map.get(key);
+	map.remove(key);
+
+	Go through HashMap:
+	for(int key: map.keyset()){
+		int value = map.get(key);
+	}
 ##2.Interfaces
 
 ###1.Comparator
