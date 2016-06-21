@@ -4,7 +4,8 @@
 // return these numbers.
 
 // ---------------------------------------------------------------------------------------------------------------------------------
-// way 1:two pointers
+// way 1: sort and two pointers
+
 // add another loop on the 3sum, thus there will be 4 loop inside. O(n^(k-1)) k is k Sum
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
@@ -43,4 +44,9 @@ public class Solution {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-way 2: HashMap
+// way 2: HashMap 
+
+// enum every pair of number and store the pair into hashmap
+// then go through hashmap to merge pairs
+// careful of duplicate 4 sum
+

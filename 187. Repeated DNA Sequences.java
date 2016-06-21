@@ -8,7 +8,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 // use two HashSet, first one is to check if substring appear more than once,second one is to get rid of duplication of output list,
 // for case of ["AAAAAAAAAAA"] -> return ["AAAAAAAAAA"]
-	
+
 public class Solution {
     public List<String> findRepeatedDnaSequences(String s) {
         HashSet<String> set = new HashSet<>();
@@ -24,3 +24,5 @@ public class Solution {
         return new ArrayList<String>(list);
     }
 }
+
+way two : rolling hash technique  : Rabin-Karp algorithm
