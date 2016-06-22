@@ -1,6 +1,14 @@
 // 166. Fraction to Recurring Decimal.java
 
 // should consider zero, negative, and overflow conditions
+
+// case:
+
+// zero                    0               
+// negative                -1, -2
+// Integer.MAX_VALUE       -1, -2147483648
+
+// ----------------------------------------------------------------------------------------------------------------------
 // use HashMap to record whether fraction will recurse, key is remain, value is the position start remain
 
 public class Solution {
@@ -42,5 +50,44 @@ public class Solution {
         }
         
         return sb.toString();
+    }
+}
+
+// ----------------------------------------------------------------------------------------------------------------------
+// update version 21-Jun-2016:
+// more consice
+// remember turn into Long to avoid overflow
+
+public class Solution {
+    public String fractionToDecimal(int numerator, int denominator) {
+        if(numerator==0) return "0";
+        StringBuilder res = new StringBuilder();
+        
+        res.append(( (numerator>0) ^ (denominator>0) ) ? "-":""); 
+        
+        long num = Math.abs((long)numerator);
+        long den = Math.abs((long)denominator);
+        
+        res.append(num/den);
+        num %= den;
+        if(num==0)
+            return res.toString();
+          
+        res.append(".");
+        HashMap<Long,Integer> map = new HashMap<>();
+        map.put(num,res.length());
+        while(num!=0){
+            num *=10;
+            res.append(num/den);
+            num %= den;
+            if(map.containsKey(num)){
+                int repeatIndex = map.get(num);
+                res.insert(repeatIndex,"(");
+                res.append(")");
+                break;
+            }
+            map.put(num,res.length());
+        }
+        return res.toString();
     }
 }
