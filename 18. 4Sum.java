@@ -7,6 +7,8 @@
 // way 1: sort and two pointers
 
 // add another loop on the 3sum, thus there will be 4 loop inside. O(n^(k-1)) k is k Sum
+// remember to sort first
+
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
@@ -14,9 +16,11 @@ public class Solution {
         Arrays.sort(nums);
         
         for(int i = 0;i<nums.length-3;i++){
-            if(i!=0&&nums[i]==nums[i-1]) continue;
+            if(i!=0&&nums[i]==nums[i-1]) 
+                continue;
             for(int j = i+1;j<nums.length-2;j++){
-                if(j!=i+1&& nums[j]==nums[j-1]) continue;
+                if(j!=i+1&& nums[j]==nums[j-1]) 
+                    continue;
                 int l = j+1, r = nums.length-1;
                 while(l<r){
                     ArrayList<Integer> list = new ArrayList<>();
