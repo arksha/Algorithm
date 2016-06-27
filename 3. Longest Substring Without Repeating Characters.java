@@ -11,7 +11,7 @@
 // Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 // ---------------------------------------------------------------------------------------------------------------------------------------
-// way one: HashSet
+// HashSet and two pointers
 // use i as fast pointer to detect duplicate character 
 // and use j to record the duplicate in the map and delete this dup character and move j forward.
 // then the size of hashset is now unique length
@@ -34,7 +34,7 @@ public class Solution {
     }
 }
 
-// way two: use int[] to implement hashtable
+// use int[] to implement hashtable
 // in array store position of character, use array index for each ascii character
 // if has duplicate, update j and the postion in map
     
@@ -50,3 +50,6 @@ public class Solution {
         return res;
     }
 }
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
+way two: two pointers

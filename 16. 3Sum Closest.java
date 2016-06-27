@@ -1,6 +1,7 @@
 //16. 3Sum Closest
 
-//similar wiht 3Sum, only add condition with closest
+// two pointers
+//similar wiht 3Sum, only add condition with closest sum
 //initial answer as  first three number
 //from 0~n-2, i~n-1 do search
 

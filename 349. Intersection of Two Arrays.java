@@ -34,3 +34,34 @@ public class Solution {
         return res;
     }
 }
+// -----------------------------------------------------------------------------------------------------------------
+// second way, two pointers
+// sort two list, if equals then go to next
+public class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int n1 = nums1.length, n2 = nums2.length;
+        int p = 0, q = 0;
+        ArrayList<Integer> res = new ArrayList<>();
+        while(p<n1&&q<n2){
+            if(nums1[p]==nums2[q]){
+                res.add(nums1[p]);
+                p++;
+                q++;
+            }else if(nums1[p]>nums2[q]){
+                q++;
+            }else {
+                p++;
+            }
+            while(p>0&& p<n1 && nums1[p]==nums1[p-1]) p++;
+            while(q>0&& q<n2 && nums2[q]==nums2[q-1]) q++;
+        }
+        int[] inter = new int[res.size()];
+        int i = 0;
+        for(Integer num: res){
+            inter[i++] = num; 
+        }
+        return inter;
+    }
+}

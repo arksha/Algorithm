@@ -45,3 +45,34 @@ public class Solution {
        return r;
     }
 }
+
+// --------------------------------------------------------------------------------------------------------------------------
+// two pointers
+// same way as I, leave the same number condition, add duplicate in the result
+
+public class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        int n1 = nums1.length,n2 = nums2.length;
+        int p = 0, q = 0;
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        while(p<n1&&q<n2){
+            if(nums1[p]==nums2[q]){
+                arr.add(nums1[p]);
+                p++;
+                q++;
+            }else if (nums1[p]>nums2[q]){
+                q++;
+            }else{
+                p++;
+            }
+        }
+        int[] res = new int[arr.size()];
+        int i = 0;
+        for(Integer num : arr){
+            res[i++] = num;
+        }
+        return res;
+    }
+}
