@@ -1,10 +1,21 @@
-8. String to Integer (atoi) My Submissions QuestionEditorial Solution
+// 8. String to Integer (atoi)
 
-Implement atoi to convert a string to an integer.
+// Implement atoi to convert a string to an integer.
 
-Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.
+// Hint: Carefully consider all possible input cases. 
+// If you want a challenge, please do not see below and ask yourself what are the possible input cases.
 
-Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.
+// Notes: It is intended for this problem to be specified vaguely 
+// (ie, no given input specs). You are responsible to gather all the input requirements up front.
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// consider case:
+// "+"
+// "-"
+// overflow
+// blankspace
+
+// special case : "+-2" -> 2
 
 public class Solution {
     public static int myAtoi(String str) {
