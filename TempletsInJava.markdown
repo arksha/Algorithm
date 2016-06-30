@@ -17,11 +17,16 @@
 
 ###3.String
 	s = s.trim();
-	s = s.toLowerCase();
-	char[] = s.split(" ");
+	char[] = s.split(" "); //split with regex
+	s.substring();
+	
+	StringBuffer sb = new StringBuffer();
+	sb.append(a);
+	sb.toString();
 ###4.Character
 	Character.isDigit( c );
 	Character.isLetterorDigit( c );
+	Character.toLowerCase(c);
 ###5.HashMap and HashSet
 	HashMap<Integer,Integer> map = new HashMap<>();
 	map.put(key,value);
@@ -32,6 +37,14 @@
 	for(int key: map.keyset()){
 		int value = map.get(key);
 	}
+###Stack
+	
+	Stack<Integer> st = new Stack<>();
+	st.push(a);
+	int a = st.pop();
+	int a = st.peek();
+
+
 ##2.Interfaces
 
 ###1.Comparator
@@ -88,3 +101,5 @@ use MyComparator;
 		}
 	}
 ###2.Bucket Sort
+
+
