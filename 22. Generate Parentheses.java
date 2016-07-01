@@ -23,3 +23,32 @@ public class Solution {
        
     }
 }
+
+// --------------------------------------------------------------------------------------------------------------
+// count up, if l<n, means not enough parentheses, should add more left part;
+// if r<l, means not match for all parentheses yet, should add more right part;
+// if r==n means enough parentheses, put into List.
+
+// can not using StringBuffer for String in this case.
+
+public class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<String>();
+        String s = "";
+        dfs(res,s,n,0,0);
+        return res;
+    }
+    public void dfs(List<String> res,String s,int n,int l,int r ){
+        if(r==n) {
+            res.add(s);
+        }else {
+            if(l<n){
+                dfs(res,s+"(",n,l+1,r);
+            } 
+            if(r<l){
+                dfs(res,s+")",n,l,r+1);
+            } 
+                
+        }
+    }
+}
