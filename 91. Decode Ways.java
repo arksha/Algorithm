@@ -1,26 +1,26 @@
-91. Decode Ways.java
+// 91. Decode Ways.java
 
-A message containing letters from A-Z is being encoded to numbers using the following mapping:
+// A message containing letters from A-Z is being encoded to numbers using the following mapping:
 
-'A' -> 1
-'B' -> 2
-...
-'Z' -> 26
-Given an encoded message containing digits, determine the total number of ways to decode it.
+// 'A' -> 1
+// 'B' -> 2
+// ...
+// 'Z' -> 26
+// Given an encoded message containing digits, determine the total number of ways to decode it.
 
-For example,
-Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
+// For example,
+// Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
 
-The number of ways decoding "12" is 2.
+// The number of ways decoding "12" is 2.
+// ---------------------------------------------------------------------------------------------------------------------  
+// use dp, 
+// dp[] record the ways before i;
+// from i = 0 to i = n;
+// dp[0] = 0, empty string
+// dp[1] only one number one way to decode
+// if s[i] between [1,9], dp[i] + previous ways
+// if s[i-1,i] between[10, 26]  dp[i] + prevous two ways
 
-use dp, 
-dp[] record the ways before i;
-from i = 0 to i = n;
-dp[0] = 0, empty string
-dp[1] only one number one way to decode
-if s[i] between [1,9], dp[i] + previous ways
-if s[i-1,i] between[10, 26]  dp[i] + prevous two ways
- 
 public class Solution {
     public int numDecodings(String s) {
         if(s==null||s.length()==0) return 0;
