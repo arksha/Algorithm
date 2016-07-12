@@ -7,11 +7,12 @@
 // Note:
 // The read function will only be called once for each test case.
 
+// ------------------------------------------------------------------------------------------------------------------------------
 // read char to temp array, step 4 every time.
 // copy temp array to buf, to record current store data place, 
 // if read length is less than 4, reading is over, return back.
 // if not return back in the if statement, means is read times of 4 of data.
-	
+
 public class Solution extends Reader4 {
     public int read(char[] buf, int n) {
     	int res = 0;
