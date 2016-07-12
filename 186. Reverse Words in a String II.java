@@ -13,7 +13,10 @@
 // basic brute froce is to get every word to new array and read reverse of the array.
 
 // but in - place, just reverse whole string and reverse every word is ok.
-// remember to include the last word to reverse
+// remember to include the last word to reverse, by adding a condition of index== s.length().
+// see I in 151.
+
+// NB: In java String is immutable so the in put has to be char[]
 class Solution{
 	public void reverseWords(char[] s) {
 		if(s.length<=1||s==null) return;
