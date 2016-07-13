@@ -39,7 +39,7 @@ public class Solution {
 
 // ------------------------------------------------------------------------------------------------------------
 // use trim, a so java way.
-
+// use lastIndexOf(),
 public class Solution {
     public int lengthOfLastWord(String s) {
 		return s.trim().length() - s.trim().lastIndexOf(" ") - 1;

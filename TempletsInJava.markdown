@@ -16,13 +16,17 @@
 	PriorityQueue<> pq = new PriorityQueue<>();
 
 ###3.String
-	s = s.trim();
-	char[] = s.split(" "); //split with regex
+	s = s.trim();//return a String[]. will only trim withe begin and end whitespace
+	char[] = s.split(""); //split with regex
 	s.substring();
-	
+	s.replace("a","b"); //replace with a with b, later one is new
+	String strlen = String.format("%4d",len);
+	s.lastIndexOf(" "); // return index of specific character
+
 	StringBuffer sb = new StringBuffer();
 	sb.append(a);
-	sb.toString();
+	sb.toString();  
+
 ###4.Character
 	Character.isDigit( c );
 	Character.isLetterorDigit( c );
