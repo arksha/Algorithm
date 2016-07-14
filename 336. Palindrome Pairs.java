@@ -13,6 +13,14 @@
 
 // ---------------------------------------------------------------------------------------------------------------------
 // O(m * n ^ 2) 
+//hashtable
+
+// Basic idea: 
+// check divide every word to left and right part, find the other half reverse in the HashMap
+
+// Two condition to accelerate: 
+// word itself is palindrome, 
+// if reverse is in the map
 
 public class Solution {
     public List<List<Integer>> palindromePairs(String[] words) {
