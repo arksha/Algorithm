@@ -24,7 +24,10 @@
 //  */
 
 // --------------------------------------------------------------------------------------------------------------------------
-// recursive
+// Inorder is left , root, right 
+
+// --------------------------------------------------------------------------------------------------------------------------
+// recursive dfs
 
 public class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
@@ -43,7 +46,7 @@ public class Solution {
 
 // --------------------------------------------------------------------------------------------------------------------------
 // iterative
-
+// use a stack to store TreeNode
 public class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();

@@ -12,7 +12,8 @@
 // Note: It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one.
 
 // ----------------------------------------------------------------------------------------------------------------
-	
+// only consider three conditions: integer, fractual number, exponent number
+use 4 flags to mark is has letter e, ".", digit, 
 
 	public class Solution {
     public boolean isNumber(String s) {

@@ -1,20 +1,21 @@
 //106.Construct Binary Tree from Inorder and Postorder Traversal
+
+// Given inorder and postorder traversal of a tree, construct the binary tree.
+
+// Note:
+// You may assume that duplicates do not exist in the tree.
+
+// ----------------------------------------------------------------------------------------------------
 //recursive find root, postorder lastone always is root,
 //find root int inroder, 
 //inorder:     left(is  index -1),		    index(root),    right(index+1      ie)
 //postorder:   left(ps  ps+ index-1-is),                    right(ps+index-is  pe-1),	pe(root)  
 
+// use two help function:
+// recursive find root : get part of inorder array and postorder array, to do dfs 
+// findindex : find postorder responsive index in inorder array.
 
-
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+// NB: careful to map the index in both array, use index to represent the begin and end in both array
 public class Solution {
     private int FindIndex(int[] arr, int s,int e,int val){
         for(int i = s;i<=e;i++){
@@ -35,3 +36,5 @@ public class Solution {
         return RecursiveFindRoot(inorder, 0, inorder.length-1,postorder,0,postorder.length-1);
     }
 }
+// ----------------------------------------------------------------------------------------------------
+// there is also a iterative version with stack, try it.
