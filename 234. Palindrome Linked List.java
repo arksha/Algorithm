@@ -45,7 +45,8 @@ public class Solution {
 }
 
 // -------------------------------------------------------------------------------------------------------------------------------
-// new another reverse list and compare O(n)
+// new another reverse list and compare O(n), O(n)
+// NB: careful this idea, don't reverse the original linklist, create a new one to compare
 public class Solution {
     public boolean isPalindrome(ListNode head) {
         if(head == null||head.next == null)
@@ -70,4 +71,31 @@ public class Solution {
         return true;
     }
     
+}
+
+// update with a new version, seperate the reverse function
+public class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if(head==null||head.next==null) return true;
+        //reverse whole linklist and compare
+        ListNode reversehead = reverse(head);
+        while(reversehead!=null){
+            if(reversehead.val!=head.val) return false;
+            reversehead = reversehead.next;
+            head = head.next;
+        }
+        return true;
+    }
+    private ListNode reverse(ListNode head){
+        if(head==null) return null;
+        ListNode reversehead = new ListNode(head.val);
+        ListNode cur  = head;
+        while(cur.next!=null){
+            ListNode temp = new ListNode(cur.next.val);
+            temp.next = reversehead;
+            reversehead = temp;
+            cur = cur.next;
+        }
+        return reversehead;
+    }
 }
