@@ -1,13 +1,5 @@
 23. Merge k Sorted Lists.java
 
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
 
 //two by two
 public class Solution {
@@ -55,14 +47,7 @@ public class Solution {
 }
 
 //2. heap
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
+
 public class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length==0)
