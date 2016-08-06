@@ -12,6 +12,7 @@
 // 1. use a target = last position in array, to compare.
 // 2. choose target like this because we can make sure that if mid <= target, 
 // 	the minimum number is definitely not in [mid, high], so we can search [low, mid].
+//  we need to find the first number smaller than the last number in array, so choose this one as compare number.
 // 3. Only applicable when array is non decreased sorted.
 // 4. When handling last two pointers of low and high, it is the same way to compare with target.
 
