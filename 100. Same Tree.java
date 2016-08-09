@@ -5,7 +5,7 @@
 // Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
 // ----------------------------------------------------------------------------------------------------------------
 // dfs
-
+// just compare left with left ,right with right
 public class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if(p==null&&q==null) return true;

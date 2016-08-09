@@ -7,10 +7,10 @@
 
 
 //----------------------------------------------------------------------------------------------------------------
-1.do twice binary search, once for finding row, once for column
-2.NB: because of (l+1<h), need to consider last two row, and have consider the row of h instead of l 
-    because if target > l maybe also >h, in this case target will be in row h. 
-3. can reuse l and h variable
+// 1.do twice binary search, once for finding row, once for column
+// 2.NB: because of (l+1<h), need to consider last two row, and have consider the row of h instead of l 
+//     because if target > l maybe also >h, in this case target will be in row h. 
+// 3. can reuse l and h variable
 public class Solution {
     /**
      * @param matrix, a list of lists of integers

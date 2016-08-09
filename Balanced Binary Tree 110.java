@@ -85,25 +85,52 @@ public class Solution {
     }
 }
 // ---------------------------------------------------------------------------------------------------
-// use dfs calculate height of tree, recursively
-// if diff is more than 1, return -1
-// check if the height is -1 in every level
+// Without return type, use -1 represent unbalanced 
 
+// check if the height is -1 in every level
 // return -1 if this subtree is unbalanced and return the height if it is balanced.
 // This will avoid much further search 
 
+// 1.recursively calculate maxDepth
+// 2. get left and right maxdepth
+// 3.if left is -1 or right is -1 or depth diff is more than 1 return -1 as unbalanced
+// 4. else return maxDepth + 1
+
+// public class Solution {
+//     public boolean isBalanced(TreeNode root) {
+//         return calheight(root)!=-1;
+//     }
+//     private int calheight(TreeNode root){
+//        if(root==null) return 0;
+//        int leftheight = calheight(root.left);
+//        if(leftheight==-1) return -1;
+//        int rightheight = calheight(root.right);
+//        if(rightheight==-1) return -1;
+//        if(leftheight-rightheight<-1||leftheight-rightheight>1)
+//        return -1;
+//        return Math.max(leftheight,rightheight)+1;
+//     }
+// }
+
+// updated: more concise way and good looking way, remember
 public class Solution {
+    /**
+     * @param root: The root of binary tree.
+     * @return: True if this Binary tree is Balanced, or false.
+     */
     public boolean isBalanced(TreeNode root) {
-        return calheight(root)!=-1;
+        return maxDepth(root) != -1;
     }
-    private int calheight(TreeNode root){
-       if(root==null) return 0;
-       int leftheight = calheight(root.left);
-       if(leftheight==-1) return -1;
-       int rightheight = calheight(root.right);
-       if(rightheight==-1) return -1;
-       if(leftheight-rightheight<-1||leftheight-rightheight>1)
-       return -1;
-       return Math.max(leftheight,rightheight)+1;
+    private int maxDepth(TreeNode root){
+        if(root == null) return 0;
+        
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        
+        if (Math.abs(left - right) > 1 || left == -1 || right == -1){
+            return -1;
+        }
+        return Math.max(left, right) + 1;
     }
+   
 }

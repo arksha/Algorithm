@@ -8,6 +8,12 @@
 
 // Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.
 
+// ------------------------------------------------------------------------------------
+// fake   head
+//   0  ,  1,   2,   3,  4,  5
+//  cur 
+//         fst  sec 
+
 public class Solution {
     public ListNode swapPairs(ListNode head) {
         if(head==null||head.next==null) return head;

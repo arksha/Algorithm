@@ -45,7 +45,7 @@ public class Solution {
     public boolean isValidBST(TreeNode root) {
         return validHelper(root, null, null);
     }
-    
+
     private boolean validHelper(TreeNode root, Integer max, Integer min){
         if(root == null){
             return true;
@@ -59,4 +59,55 @@ public class Solution {
         return validHelper(root.left, root.val, min) &&
                 validHelper(root.right, max, root.val);
     }
+}
+
+// -------------------------------------------------------------------------------------------
+// with return type
+// 1. use helper, helper return returntype
+// 2. Divide: let left and right figure out result
+// 3. Conquer: return invalid condition first, then return valid condition
+// 4. invalid condition: left is not valid or right is not balanced, set min and max into 0
+// 					  left max >= root.val or right.min <= root.val
+// 5. valid condition: return true and update max and min 
+
+// NB: return class do not contain root.
+// 	update max with current right subtree biggest, min with current left subtree smallest.
+	
+class ValidNode{
+    boolean isbst;
+    int max, min;
+    public ValidNode(boolean isbst, int max, int min){
+        this.isbst = isbst;
+        this.max = max;
+        this.min = min;
+    }
+}
+public class Solution {
+    /**
+     * @param root: The root of binary tree.
+     * @return: True if the binary tree is BST, or false
+     */
+    public boolean isValidBST(TreeNode root) {
+        // write your code here
+        return ValidHelper(root).isbst;
+    }
+    private ValidNode ValidHelper(TreeNode root){
+        if(root == null){
+            return new ValidNode(true, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        }
+        ValidNode left = ValidHelper(root.left);
+        ValidNode right = ValidHelper(root.right);
+        
+        if(!left.isbst || !right.isbst){
+            return new ValidNode(false, 0, 0);
+        }
+        if(root.left != null && left.max >= root.val ||
+            root.right != null && right.min <= root.val){
+            return new ValidNode(false, 0, 0);
+        }
+        return new ValidNode(true, 
+                             Math.max(right.max, root.val),
+                             Math.min(left.min,root.val));
+    }
+    
 }

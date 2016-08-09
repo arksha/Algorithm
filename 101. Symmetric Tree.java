@@ -69,3 +69,30 @@ public class Solution {
         return true;
     }
 }
+// -----------------------------------------------------------------------------------------------------------------------
+//3. Iteration 
+//use two queue to store left subtree and right subtree
+public class Solution {
+    public boolean isSymmetric(TreeNode root) {//iterative traversal with level
+        if(root == null) return true;
+        LinkedList <TreeNode> l = new LinkedList<>(),
+                              r = new LinkedList<>();
+        l.add(root.left);
+        r.add(root.right);
+        while(!l.isEmpty()&&!r.isEmpty()){
+            TreeNode t1 = l.poll(),
+                     t2 = r.poll();
+            if((t1!=null&&t2==null)||(t1==null&&t2!=null)){//may have one null subtree then it's false
+                return false;
+            }
+            if(t1!=null&&t2!=null){
+                if(t1.val!=t2.val) return false;
+                l.add(t1.left);//symmetricly add the sub node like this <-   ->
+                l.add(t1.right);
+                r.add(t2.right);
+                r.add(t2.left);
+            }
+        }
+        return true;
+    }
+}

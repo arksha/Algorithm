@@ -27,3 +27,51 @@ public class Solution {
        return -1; 
     }
 }
+
+// ------------------------------------------------------------------------------------------------
+// updated with a gerneral method
+// 1. two conditions of mid >low or mid < low
+// 2. then see target is in the monoincreased section 
+public class Solution {
+    /** 
+     *@param A : an integer rotated sorted array
+     *@param target :  an integer to be searched
+     *return : an integer
+     */
+    public int search(int[] A, int target) {
+        // write your code here
+        if(A == null || A.length == 0){
+            return -1;
+        }
+        int low = 0, high = A.length-1;
+        while (low + 1 < high){
+            int mid = low + (high - low) / 2;
+                if (A[mid] == target){
+                    return mid;
+                }
+                if(A[mid]> A[low]){
+                    if(target >= A[low] && target <= A[mid]){
+                        high = mid;
+                    }else {
+                        low = mid;
+                    }
+                }else {
+                     if(target >= A[mid] && target <= A[high]){
+                        low = mid;
+                    }else {
+                        high = mid;
+                    }
+                }
+              
+            
+        }
+        if(A[low] == target) {
+            return low;
+        }else if (A[high] == target) {
+            return high;
+        }else {
+            return -1;
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------
