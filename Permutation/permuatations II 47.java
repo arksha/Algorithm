@@ -42,6 +42,7 @@ class Solution {
             return;
         }
         for(int i = 0;i < nums.size();i++){
+            // visited[i-1] == 1 is also work because only accept one order for same number
             if(visited[i] == 1 || i != 0 && nums.get(i) == nums.get(i - 1) && visited[i-1] == 0){
                 continue;
             }
