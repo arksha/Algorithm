@@ -32,6 +32,7 @@ public class Solution {
         TreeNode curNode = null;
         while(root != null && p.val != root.val){
             if(p.val < root.val){
+                //when go to left subtree, record root for finding right subtree
                 curNode = root;
                 root = root.left;
             }else {
