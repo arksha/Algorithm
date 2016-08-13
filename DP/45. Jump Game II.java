@@ -1,4 +1,6 @@
 //45. Jump Game II
+// find out min step to get destination
+
 //greedy
 //1. use 2pointers to determine how far we can go
 //cur is the current region we concider, furthest is the furthest we can reach in the before current region
@@ -17,5 +19,36 @@ public class Solution {
             furthest = Math.max(i+nums[i],furthest);
         }
         return step;
+    }
+}
+
+------------------------------------------------------------------------------------------------------------
+DP
+
+public class Solution {
+    /**
+     * @param A: A list of lists of integers
+     * @return: An integer
+     */
+    public int jump(int[] A) {
+        // write your code here
+        if(A == null || A.length == 0){
+            return -1;
+        }
+        int n = A.length; 
+        //for i position the minimum step to jump here
+        // j is the last place come to current place
+        int[] dp = new int[n];
+        dp[0] = 0;
+        for(int i = 1;i<n;i++){
+            dp[i] = Integer.MAX_VALUE;
+            for(int j = 0;j < i;j++){
+                if(dp[i] != Integer.MAX_VALUE && j + A[j] >= i){
+                    dp[i] = dp[j] + 1;
+                    break;
+                }
+            }
+        }
+        return dp[n - 1];
     }
 }
