@@ -73,4 +73,41 @@ public class Solution {
     }
 }
 
+add a method to find max lenghth word in worddict, this will cut some branches when searching from i - 1 to the previous one.
+
+public class Solution {
+    /**
+     * @param s: A string s
+     * @param dict: A dictionary of words dict
+     */
+    public boolean wordBreak(String s, Set<String> dict) {
+        int n = s.length();
+        
+        boolean[] dp = new boolean[n + 1];
+        
+        dp[0] = true;
+        int maxlength = maxLength(dict);
+        for(int i = 1;i < n + 1;i++){
+            for(int j = 1; j <= i && j <= maxlength; j++){
+                if(dp[i - j] == false){
+                    continue;
+                }
+                
+                String sub = s.substring(i - j,i);
+                if(dict.contains(sub)){
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[n];
+    }
+    private int maxLength(Set<String> dict){
+        int maxlength = 0;
+        for(String word: dict){
+            maxlength = Math.max(maxlength, word.length());
+        }
+        return maxlength;
+    }
+}
 
