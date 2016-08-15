@@ -46,6 +46,7 @@ public class Solution {
 }
 
 // updated version:
+// NB: if only write root.left != null and root.right != null will be wrong
 
 public class Solution {
     /**
