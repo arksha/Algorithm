@@ -10,7 +10,7 @@
 // The result can be in any order.
 
 // ----------------------------------------------------------------------------------------------------------------
-// first way , use  2 HashSet
+// first way , use  2 HashSet O(N) O(N)
 // three for loops, one for add nums1 to set1, 
 // one for check the second nums2 appears in nums1 and add into the second set,
 // last is to count the all the numbers in the second map
@@ -35,8 +35,9 @@ public class Solution {
     }
 }
 // -----------------------------------------------------------------------------------------------------------------
-// second way, two pointers
+// second way, two pointers O(MlogM+NlogN) O(1)
 // sort two list, if equals then go to next
+// NB: use while move pointers to avoid dup num 
 public class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
