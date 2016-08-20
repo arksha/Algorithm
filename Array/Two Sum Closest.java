@@ -13,7 +13,7 @@ Do it in O(nlogn) time complexity.
 
 -----------------------------------------------------------------------------------------------
 sort and two pointers
-O(n)
+O(nlogn) + O(n) 
 public class Solution {
     /**
      * @param nums an integer array
