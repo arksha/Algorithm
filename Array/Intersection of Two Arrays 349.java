@@ -66,3 +66,45 @@ public class Solution {
         return inter;
     }
 }
+
+// better way to avoid dup
+// when arrlist is empty or the last one is not equal to current num, add into arrlist
+
+public class Solution {
+    /**
+     * @param nums1 an integer array
+     * @param nums2 an integer array
+     * @return an integer array
+     */
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        ArrayList<Integer> reslist = new ArrayList<>();
+        int m = nums1.length;
+        int n = nums2.length;
+        int p = 0;
+        int q = 0;
+        
+        while(p < m && q < n){
+            int num1 = nums1[p];
+            int num2 = nums2[q];
+            if(num1 == num2){
+                if(reslist.size() == 0 || reslist.get(reslist.size() - 1) != num1){//avoid dup
+                    reslist.add(num1);
+                }
+                p++;
+                q++;
+            }else if(num1 < num2){
+                p++;
+            }else{
+                q++;
+            }
+        }
+        int[] res = new int[reslist.size()];
+        int i = 0;
+        for(int num: reslist){
+            res[i++] = num;
+        }
+        return res;
+    }
+}
