@@ -64,3 +64,6 @@ public class Solution {
         return max;
     }
 }
+
+
+Minimum Subarray is the same with this one
