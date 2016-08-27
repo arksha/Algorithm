@@ -101,3 +101,36 @@ class MyQueue {
         return input.empty()&&output.empty();   
     }
 }
+
+// different outpput of pop()
+
+// public class Queue {
+//     private Stack<Integer> stack1;
+//     private Stack<Integer> stack2;
+
+//     public Queue() {
+//       stack1 = new Stack<Integer>();
+//       stack2 = new Stack<Integer>();
+//     }
+    
+//     public void push(int element) {
+//         stack1.push(element);
+//     }
+
+//     public int pop() {
+//         int topnum = this.top();
+//         if(!stack2.isEmpty()){
+//             stack2.pop();
+//         }
+//         return topnum;
+//     }
+
+//     public int top() {
+//         if(stack2.isEmpty()){
+//             while(!stack1.isEmpty()){
+//                 stack2.push(stack1.pop());
+//             }
+//         }
+//         return stack2.peek();
+//     }
+// }
