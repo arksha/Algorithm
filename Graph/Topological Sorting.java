@@ -26,17 +26,17 @@ public class Solution {
     public ArrayList<DirectedGraphNode> topSort(ArrayList<DirectedGraphNode> graph) {
        ArrayList<DirectedGraphNode> sortedlist = new ArrayList<>();
        HashMap<DirectedGraphNode, Integer> inDegreeMap = new HashMap<>();
-       //calculate indegree
+       //calculate indegree , except root node
        for(DirectedGraphNode node : graph){
            for(DirectedGraphNode neighbor : node.neighbors){
                if(inDegreeMap.containsKey(neighbor)){
                    inDegreeMap.put(neighbor, inDegreeMap.get(neighbor) + 1);
                }else{
-                   inDegreeMap.put(neighbor, 1);//
+                   inDegreeMap.put(neighbor, 1);//indegree should be 1
                }
            }
        }
-       //add node with no indegree start BFS
+       //add node with no indegree, the root node, then start BFS
        Queue<DirectedGraphNode> queue = new LinkedList<>();
        for(DirectedGraphNode node : graph){
            if(!inDegreeMap.containsKey(node)){
