@@ -58,3 +58,34 @@ public class Solution {
        return sortedlist;
     }
 }
+-------------------------------------------------
+dfs
+
+public class Solution {
+    /**
+     * @param graph: A list of Directed graph node
+     * @return: Any topological order for the given graph.
+     */    
+    public ArrayList<DirectedGraphNode> topSort(ArrayList<DirectedGraphNode> graph) {
+       ArrayList<DirectedGraphNode> sortedlist = new ArrayList<>();
+       HashSet<DirectedGraphNode> visited = new HashSet<>();
+       for(DirectedGraphNode node : graph){
+          if(!visited.contains(node)){
+              dfs(node, visited, sortedlist);
+          } 
+       }
+       return sortedlist;
+    }
+    private void dfs(DirectedGraphNode node, 
+                    HashSet<DirectedGraphNode> visited,
+                    ArrayList<DirectedGraphNode> sortedlist){
+        visited.add(node);
+        for(DirectedGraphNode neighbor : node.neighbors){
+            if(!visited.contains(neighbor)){
+                dfs(neighbor, visited, sortedlist);
+            }
+        }
+            
+        sortedlist.add(0,node);
+    }
+}
