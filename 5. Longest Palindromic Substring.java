@@ -3,7 +3,8 @@
 // Given a string S, find the longest palindromic substring in S. 
 //You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.
 
-
+----------------------------------------------------------------------------------------
+expand substring length and check
 public class Solution {
     public String longestPalindrome(String s) {
         String res = "";
