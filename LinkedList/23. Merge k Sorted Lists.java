@@ -81,3 +81,56 @@ public class Solution {
     return fake.next;
     }
 }
+
+//3. Divide and conquer
+//This is a pretty easy way to do this, first choice 
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        if(lists == null || lists.length == 0){
+            return null;
+        }    
+        return mergeHelper(lists, 0, lists.length - 1);
+    }
+    private ListNode mergeHelper(ListNode[] lists, int start, int end){
+        if(start == end){
+            return lists[start];
+        }
+        int mid = start + (end - start) / 2;
+        ListNode left = mergeHelper(lists, start, mid);
+        ListNode right = mergeHelper(lists, mid + 1, end);
+        return mergetwo(left, right);
+    }
+    private ListNode mergetwo(ListNode A, ListNode B){
+        if(A == null && B == null){
+            return null;
+        }
+        ListNode fake = new ListNode(0);
+        ListNode p = fake;
+        while(A != null && B != null){
+            if(A.val <= B.val){
+                p.next = A;
+                A = A.next;
+            }else{
+                p.next = B;
+                B = B.next;
+            }
+            p = p.next;
+        }
+        if(A != null){
+            p.next = A;
+        }
+        if(B != null){
+            p.next = B;
+        }
+        return fake.next;
+    }
+}
