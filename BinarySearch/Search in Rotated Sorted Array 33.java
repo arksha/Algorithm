@@ -60,3 +60,41 @@ public class Solution {
         }
     }
 }
+
+Updated: 09.10.2016
+
+public class Solution {
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0){
+            return -1;
+        }
+        int start = 0;
+        int end = nums.length - 1;
+        while(start + 1 < end){
+            int mid = start + (end - start) / 2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            if(nums[start] < nums[mid]){// former part 
+                if(nums[start] <= target && target <= nums[mid]){
+                    end = mid;
+                }else{
+                    start = mid;// abandon former mono area
+                }
+            }else{
+                if(nums[mid] <= target && target <= nums[end]){
+                    start = mid;
+                }else{
+                    end = mid;
+                }
+            }
+        }
+        if(nums[start] == target){
+            return start;
+        }
+        if(nums[end] == target){
+            return end;
+        }
+        return -1;
+    }
+}
