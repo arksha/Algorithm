@@ -19,7 +19,72 @@ Return 0 if there is no such transformation sequence.
 All words have the same length.
 All words contain only lowercase alphabetic characters.
 
+------
+leetcode 
 
+public class Solution {
+    public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
+        if(beginWord == null || beginWord.length() == 0 || endWord == null || endWord.length() == 0){
+            return 0;
+        }
+        if(wordList == null || wordList.size() == 0){
+            return 0;
+        }
+        HashSet<String> visited = new HashSet<>();
+        if(beginWord.equals(endWord)){
+            return 1;
+        }
+        Queue<String> queue = new LinkedList<String>();
+        queue.offer(beginWord);
+        visited.add(beginWord);
+        
+        wordList.add(beginWord);
+        wordList.add(endWord);
+        
+        int result = 1;
+        while(!queue.isEmpty()){
+            result++;
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                String node = queue.poll();
+                for(String neighbor: findneighbor(node, wordList)){
+                    if(visited.contains(neighbor)){
+                        continue;
+                    }
+                    if(endWord.equals(neighbor)){
+                        return result;
+                    }
+                    queue.offer(neighbor);
+                    visited.add(neighbor);
+                }
+            }
+        }
+        return 0;
+    }
+    private String changeChar(String node, int index, char c){
+        char[] chararr = node.toCharArray();
+        chararr[index] = c;
+        return new String(chararr);
+    }
+    private ArrayList<String> findneighbor(String node, Set<String> wordList){
+        ArrayList<String> neighborlist = new ArrayList<>();
+        for(int i = 0; i < node.length(); i++){
+            for(char c = 'a'; c <= 'z'; c++){
+                if(c == node.charAt(i)){
+                    continue;
+                }
+                String nextWord = changeChar(node, i, c);
+                if(wordList.contains(nextWord)){
+                    neighborlist.add(nextWord);
+                }
+            }
+        }
+        return neighborlist;
+    }
+    
+}
+
+------------------------------------------------------------------------------------------------
 public class Solution {
     /**
       * @param start, a string
