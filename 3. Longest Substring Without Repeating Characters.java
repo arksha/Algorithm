@@ -33,7 +33,27 @@ public class Solution {
         return max;
     }
 }
-
+//prefer way 
+//time O(n) , space O(min(s.length, alphabet set))
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if(s == null || s.length() == 0){
+            return 0;
+        }
+        int max = 0;
+        HashMap<Character, Integer> map = new HashMap<>();//store dup start index
+        for(int start = 0, end = 0; end < s.length(); end++){
+            if(map.containsKey(s.charAt(end))){
+                start = Math.max(start, map.get(s.charAt(end)) + 1);// start from current, 
+            }
+            max = Math.max(max, end - start + 1);
+            map.put(s.charAt(end), end);//(each char, char's index)
+            
+        
+        }
+        return max; 
+    }
+}
 // use int[] to implement hashtable
 // in array store position of character, use array index for each ascii character
 // if has duplicate, update j and the postion in map
